@@ -1,0 +1,15 @@
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Konfigurasi Lokal
+.env
+
+# Dataset Besar (Opsional, hapus tanda # jika dataset Anda terlalu besar untuk GitHub)
+# *.csv
+# *.parquet
