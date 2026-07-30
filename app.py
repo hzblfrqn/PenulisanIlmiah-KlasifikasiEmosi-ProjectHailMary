@@ -7,14 +7,24 @@ from deep_translator import GoogleTranslator
 app = Flask(__name__)
 
 print("Memuat Model AI dan Vectorizer")
+import traceback
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+VECTORIZER_PATH = os.path.join(BASE_DIR, "models", "tfidf_vectorizer_global.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "lightgbm_model_global.pkl")
+
+print("Loading:", VECTORIZER_PATH)
+print("Loading:", MODEL_PATH)
+
 try:
-    vectorizer = joblib.load('models/tfidf_vectorizer_global.pkl')
-    model = joblib.load('models/lightgbm_model_global.pkl')
-    print("Model berhasil diaktifkan!")
-except Exception as e:
-    print(f"\nGagal memuat model: {e}")
-    vectorizer = None
-    model = None
+    vectorizer = joblib.load(VECTORIZER_PATH)
+    model = joblib.load(MODEL_PATH)
+    print("Model loaded successfully")
+except Exception:
+    traceback.print_exc()
+    raise
 
 @app.route('/')
 def home():
