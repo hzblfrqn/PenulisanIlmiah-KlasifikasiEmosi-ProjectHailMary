@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import math
 from deep_translator import GoogleTranslator
-
+print("DEBUG VERSION 2")
 app = Flask(__name__)
 
 print("Memuat Model AI dan Vectorizer")
